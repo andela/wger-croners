@@ -311,7 +311,7 @@ def get_user_config_path(*args):
         return win32_get_app_data_path(*args)
 
     config_home = os.environ.get(
-        'XDG_CONFIG_HOME', os.path.join(os.path.expanduser('~'), '.config'))
+        'XDG_CONFIG_HOME', os.path.join(os.path.expanduser('~'), '.config')) ######
 
     return os.path.join(config_home, *args)
 
