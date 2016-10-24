@@ -17,7 +17,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'database.sqlite'
+        'NAME': 'wger-croners.database.sqlite'
         # 'USER': '',
         # 'PASSWORD': '',
         # 'HOST': '',
@@ -41,7 +41,9 @@ SITE_URL = 'http://localhost:8000'
 # Path to uploaded files
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 STATIC_URL = '/static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 MEDIA_ROOT = '/home/bopchy/.local/share/wger/media'
 MEDIA_URL = '/media/'
 

@@ -4,6 +4,12 @@
     :copyright: 2011, 2012 by OpenSlides team, see AUTHORS.
     :license: GNU GPL, see LICENSE for more details.
 """
+import os
+
+if os.getenv('HEROKU') is not None:
+    from .production import *
+else:
+    from .settings import *
 
 VERSION = (1, 8, 0, 'alpha', 3)
 RELEASE = False
