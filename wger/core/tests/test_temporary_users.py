@@ -157,16 +157,20 @@ class DemoUserTestCase(WorkoutManagerTestCase):
         '''
         demo_notice_text = 'You are using a guest account'
         self.user_login('demo')
-        self.assertContains(self.client.get(reverse('core:dashboard')), demo_notice_text)
+        self.assertContains(self.client.get(reverse('core:dashboard')),
+                            demo_notice_text)
         self.assertContains(self.client.get(reverse('manager:workout:overview')),
                             demo_notice_text)
         self.assertContains(self.client.get(reverse('exercise:exercise:overview')),
                             demo_notice_text)
-        self.assertContains(self.client.get(reverse('exercise:muscle:overview')), demo_notice_text)
+        self.assertContains(self.client.get(reverse('exercise:muscle:overview')),
+                            demo_notice_text)
         self.assertContains(self.client.get(reverse('nutrition:plan:overview')),
                             demo_notice_text)
-        self.assertContains(self.client.get(reverse('software:issues')), demo_notice_text)
-        self.assertContains(self.client.get(reverse('software:license')), demo_notice_text)
+        self.assertContains(self.client.get(reverse('software:issues')),
+                            demo_notice_text)
+        self.assertContains(self.client.get(reverse('software:license')),
+                            demo_notice_text)
 
     def test_command_delete_old_users(self):
         '''

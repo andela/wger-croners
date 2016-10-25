@@ -22,7 +22,8 @@ from django.template.context_processors import csrf
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _, ugettext_lazy
 from django.utils import translation
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import (
+    PermissionRequiredMixin, LoginRequiredMixin)
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout as django_logout
@@ -40,7 +41,8 @@ from django.conf import settings
 from rest_framework.authtoken.models import Token
 
 from wger.utils.constants import USER_TAB
-from wger.utils.generic_views import WgerFormMixin, WgerMultiplePermissionRequiredMixin
+from wger.utils.generic_views import (WgerFormMixin,
+                                      WgerMultiplePermissionRequiredMixin)
 from wger.utils.user_agents import check_request_amazon, check_request_android
 from wger.core.forms import (
     UserPreferencesForm,
@@ -123,7 +125,8 @@ def delete(request, user_pk=None):
                 return HttpResponseRedirect(reverse('software:features'))
             else:
                 gym_pk = request.user.userprofile.gym_id
-                return HttpResponseRedirect(reverse('gym:gym:user-list', kwargs={'pk': gym_pk}))
+                return HttpResponseRedirect(reverse('gym:gym:user-list',
+                                                    kwargs={'pk': gym_pk}))
     context = {'form': form,
                'user_delete': user,
                'form_action': form_action}
@@ -275,7 +278,8 @@ def preferences(request):
     # Process the preferences form
     if request.method == 'POST':
 
-        form = UserPreferencesForm(data=request.POST, instance=request.user.userprofile)
+        form = UserPreferencesForm(data=request.POST,
+                                   instance=request.user.userprofile)
         form.user = request.user
 
         # Save the data if it validates
@@ -287,7 +291,8 @@ def preferences(request):
 
     # Process the email form
     if request.method == 'POST':
-        email_form = UserPersonalInformationForm(data=request.POST, instance=request.user)
+        email_form = UserPersonalInformationForm(data=request.POST,
+                                                 instance=request.user)
 
         if email_form.is_valid() and redirect:
             email_form.save()
@@ -412,7 +417,8 @@ class UserEditView(WgerFormMixin,
         Send some additional data to the template
         '''
         context = super(UserEditView, self).get_context_data(**kwargs)
-        context['form_action'] = reverse('core:user:edit', kwargs={'pk': self.object.id})
+        context['form_action'] = reverse('core:user:edit',
+                                         kwargs={'pk': self.object.id})
         context['title'] = _('Edit {0}'.format(self.object))
         return context
 
@@ -444,7 +450,8 @@ def api_key(request):
     return render(request, 'user/api_key.html', context)
 
 
-class UserDetailView(LoginRequiredMixin, WgerMultiplePermissionRequiredMixin, DetailView):
+class UserDetailView(LoginRequiredMixin,
+                     WgerMultiplePermissionRequiredMixin, DetailView):
     '''
     User overview for gyms
     '''
