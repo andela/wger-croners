@@ -46,8 +46,6 @@ coverage.xml
 
 # Django stuff:
 *.log
-settings*.py
-*.sqlite
 /CACHE
 
 # Sphinx documentation
@@ -59,6 +57,6 @@ target/
 # IDE
 .idea/
 
-# External Libraries 
+# External Libraries
 wger/core/static/bower_components
 node_modules
