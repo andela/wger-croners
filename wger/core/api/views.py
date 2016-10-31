@@ -21,6 +21,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import detail_route
 
 from wger.core.models import (
+    ApiUserCreation,
     UserProfile,
     Language,
     DaysOfWeek,
@@ -28,6 +29,7 @@ from wger.core.models import (
     RepetitionUnit,
     WeightUnit)
 from wger.core.api.serializers import (
+    ApiuserSerializer,
     UsernameSerializer,
     LanguageSerializer,
     DaysOfWeekSerializer,
@@ -38,6 +40,13 @@ from wger.core.api.serializers import (
 from wger.core.api.serializers import UserprofileSerializer
 from wger.utils.permissions import UpdateOnlyPermission, WgerPermission
 
+class ApiUserCreationViewSet(viewsets.ModelViewSet):
+    '''
+    API endpoint for new users 
+    '''
+    queryset = User.objects.all()
+    serializer_class = ApiuserSerializer
+    ordering_fields = '__all__'
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     '''
