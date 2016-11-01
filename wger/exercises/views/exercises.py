@@ -27,7 +27,8 @@ from django.forms import (
 )
 from django.core.cache import cache
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import (PermissionRequiredMixin,
+                                        LoginRequiredMixin)
 from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
 from django.template.loader import render_to_string
@@ -206,7 +207,8 @@ class ExerciseUpdateView(ExercisesEditAddView,
 
     def get_context_data(self, **kwargs):
         context = super(ExerciseUpdateView, self).get_context_data(**kwargs)
-        context['form_action'] = reverse('exercise:exercise:edit', kwargs={'pk': self.object.id})
+        context['form_action'] = reverse('exercise:exercise:edit',
+                                         kwargs={'pk': self.object.id})
         context['title'] = _(u'Edit {0}').format(self.object.name)
 
         return context
@@ -237,7 +239,8 @@ class ExerciseAddView(ExercisesEditAddView, LoginRequiredMixin, CreateView):
         return super(ExerciseAddView, self).dispatch(request, *args, **kwargs)
 
 
-class ExerciseCorrectView(ExercisesEditAddView, LoginRequiredMixin, UpdateView):
+class ExerciseCorrectView(ExercisesEditAddView, LoginRequiredMixin,
+                          UpdateView):
     '''
     Generic view to update an existing exercise
     '''
@@ -255,7 +258,8 @@ class ExerciseCorrectView(ExercisesEditAddView, LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(ExerciseCorrectView, self).get_context_data(**kwargs)
-        context['form_action'] = reverse('exercise:exercise:correct', kwargs={'pk': self.object.id})
+        context['form_action'] = reverse('exercise:exercise:correct',
+                                         kwargs={'pk': self.object.id})
         context['title'] = _(u'Correct {0}').format(self.object.name)
         return context
 
@@ -314,7 +318,8 @@ class ExerciseDeleteView(WgerDeleteMixin,
         return context
 
 
-class PendingExerciseListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+class PendingExerciseListView(LoginRequiredMixin, PermissionRequiredMixin,
+                              ListView):
     '''
     Generic view to list all weight units
     '''

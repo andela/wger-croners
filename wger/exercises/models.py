@@ -141,7 +141,8 @@ class ExerciseCategory(models.Model):
         # Cached template fragments
         for language in Language.objects.all():
             delete_template_fragment_cache('exercise-overview', language.id)
-            delete_template_fragment_cache('exercise-overview-mobile', language.id)
+            delete_template_fragment_cache('exercise-overview-mobile',
+                                           language.id)
 
     def delete(self, *args, **kwargs):
         '''
@@ -149,7 +150,8 @@ class ExerciseCategory(models.Model):
         '''
         for language in Language.objects.all():
             delete_template_fragment_cache('exercise-overview', language.id)
-            delete_template_fragment_cache('exercise-overview-mobile', language.id)
+            delete_template_fragment_cache('exercise-overview-mobile',
+                                           language.id)
 
         super(ExerciseCategory, self).delete(*args, **kwargs)
 
@@ -223,7 +225,8 @@ class Exercise(AbstractSubmissionModel, AbstractLicenseModel, models.Model):
         '''
         Returns the canonical URL to view an exercise
         '''
-        return reverse('exercise:exercise:view', kwargs={'id': self.id, 'slug': slugify(self.name)})
+        return reverse('exercise:exercise:view',
+                       kwargs={'id': self.id, 'slug': slugify(self.name)})
 
     def save(self, *args, **kwargs):
         '''
@@ -239,7 +242,8 @@ class Exercise(AbstractSubmissionModel, AbstractLicenseModel, models.Model):
         for language in Language.objects.all():
             delete_template_fragment_cache('muscle-overview', language.id)
             delete_template_fragment_cache('exercise-overview', language.id)
-            delete_template_fragment_cache('exercise-overview-mobile', language.id)
+            delete_template_fragment_cache('exercise-overview-mobile',
+                                           language.id)
             delete_template_fragment_cache('equipment-overview', language.id)
 
         # Cached workouts
@@ -258,7 +262,8 @@ class Exercise(AbstractSubmissionModel, AbstractLicenseModel, models.Model):
         for language in Language.objects.all():
             delete_template_fragment_cache('muscle-overview', language.id)
             delete_template_fragment_cache('exercise-overview', language.id)
-            delete_template_fragment_cache('exercise-overview-mobile', language.id)
+            delete_template_fragment_cache('exercise-overview-mobile',
+                                           language.id)
             delete_template_fragment_cache('equipment-overview', language.id)
 
         # Cached workouts
@@ -351,7 +356,8 @@ def exercise_image_upload_dir(instance, filename):
     return "exercise-images/{0}/{1}".format(instance.exercise.id, filename)
 
 
-class ExerciseImage(AbstractSubmissionModel, AbstractLicenseModel, models.Model):
+class ExerciseImage(AbstractSubmissionModel,
+                    AbstractLicenseModel, models.Model):
     '''
     Model for an exercise image
     '''
@@ -402,7 +408,8 @@ class ExerciseImage(AbstractSubmissionModel, AbstractLicenseModel, models.Model)
         for language in Language.objects.all():
             delete_template_fragment_cache('muscle-overview', language.id)
             delete_template_fragment_cache('exercise-overview', language.id)
-            delete_template_fragment_cache('exercise-overview-mobile', language.id)
+            delete_template_fragment_cache('exercise-overview-mobile',
+                                           language.id)
             delete_template_fragment_cache('equipment-overview', language.id)
 
         # And go on
@@ -417,7 +424,8 @@ class ExerciseImage(AbstractSubmissionModel, AbstractLicenseModel, models.Model)
         for language in Language.objects.all():
             delete_template_fragment_cache('muscle-overview', language.id)
             delete_template_fragment_cache('exercise-overview', language.id)
-            delete_template_fragment_cache('exercise-overview-mobile', language.id)
+            delete_template_fragment_cache('exercise-overview-mobile',
+                                           language.id)
             delete_template_fragment_cache('equipment-overview', language.id)
 
         # Make sure there is always a main image

@@ -69,9 +69,9 @@ class UserEmailForm(forms.ModelForm):
         Email must be unique system wide
 
         However, this check should only be performed when the user changes his
-        email, otherwise the uniqueness check will because it will find one user
-        (the current one) using the same email. Only when the user changes it, do
-        we want to check that nobody else has that email
+        email, otherwise the uniqueness check will because it will find one
+        user (the current one) using the same email. Only when the user changes
+        it, do we want to check that nobody else has that email
         '''
 
         email = self.cleaned_data["email"]

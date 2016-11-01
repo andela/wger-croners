@@ -1,4 +1,4 @@
-
+"""
 # This file is part of wger Workout Manager.
 #
 # wger Workout Manager is free software: you can redistribute it and/or modify
@@ -12,11 +12,11 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU Affero General Public License
+"""
 from wger.core.models import UserProfile
-
 from wger.manager import models as manager_models
-
 from django.contrib import admin
+
 
 admin.site.register(manager_models.Workout)
 admin.site.register(manager_models.Set)

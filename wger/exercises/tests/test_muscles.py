@@ -36,7 +36,8 @@ class MuscleRepresentationTestCase(WorkoutManagerTestCase):
         '''
         Test that the representation of an object is correct
         '''
-        self.assertEqual("{0}".format(Muscle.objects.get(pk=1)), 'Anterior testoid')
+        self.assertEqual("{0}".format(Muscle.objects.get(pk=1)),
+                         'Anterior testoid')
 
 
 class MuscleAdminOverviewTest(WorkoutManagerAccessTestCase):

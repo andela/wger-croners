@@ -35,7 +35,8 @@ class ExerciseCategoryRepresentationTestCase(WorkoutManagerTestCase):
         '''
         Test that the representation of an object is correct
         '''
-        self.assertEqual("{0}".format(ExerciseCategory.objects.get(pk=1)), 'Category')
+        self.assertEqual("{0}".format(ExerciseCategory.objects.get(pk=1)),
+                         'Category')
 
 
 class CategoryOverviewTestCase(WorkoutManagerAccessTestCase):
@@ -127,7 +128,8 @@ class ExerciseCategoryCacheTestCase(WorkoutManagerTestCase):
         if not self.is_mobile:
             self.assertNotEqual(old_exercise_overview, new_exercise_overview)
         else:
-            self.assertNotEqual(old_exercise_overview_mobile, new_exercise_overview_mobile)
+            self.assertNotEqual(old_exercise_overview_mobile,
+                                new_exercise_overview_mobile)
 
 
 class ExerciseCategoryApiTestCase(api_base_test.ApiBaseResourceTestCase):
