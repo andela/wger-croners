@@ -77,11 +77,11 @@ class Language(models.Model):
         '''
         return False
 
-@python_2_unicode_compatible
-class ApiUserCreation(models.Model):
+#@python_2_unicode_compatible
+class UserCreation(models.Model):
     username = models.CharField(max_length=254)
-    email = models.EmailField(required=False)
-    password = models.CharField()
+    email = models.EmailField()
+    password = models.CharField(max_length=254)
 
 @python_2_unicode_compatible
 class UserProfile(models.Model):

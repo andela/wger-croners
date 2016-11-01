@@ -18,7 +18,7 @@
 from rest_framework import serializers
 
 from wger.core.models import (
-    ApiUserCreation,
+    UserCreation,
     UserProfile,
     Language,
     DaysOfWeek,
@@ -27,11 +27,12 @@ from wger.core.models import (
     WeightUnit)
 
 
-class ApiuserSerializer(serializers.ModelSerializer):
+class UsercreationSerializer(serializers.ModelSerializer):
     '''
     Serializer for users created via API
     '''
-    model = ApiUserCreation
+    class Meta:
+        model = UserCreation
 
 class UserprofileSerializer(serializers.ModelSerializer):
     '''

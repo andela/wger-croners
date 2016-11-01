@@ -15,13 +15,13 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Workout Manager.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User as Django_User, User
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import detail_route
 
 from wger.core.models import (
-    ApiUserCreation,
+    UserCreation,
     UserProfile,
     Language,
     DaysOfWeek,
@@ -29,7 +29,7 @@ from wger.core.models import (
     RepetitionUnit,
     WeightUnit)
 from wger.core.api.serializers import (
-    ApiuserSerializer,
+    UsercreationSerializer,
     UsernameSerializer,
     LanguageSerializer,
     DaysOfWeekSerializer,
@@ -39,14 +39,34 @@ from wger.core.api.serializers import (
 )
 from wger.core.api.serializers import UserprofileSerializer
 from wger.utils.permissions import UpdateOnlyPermission, WgerPermission
+from wger.core.views import user
 
-class ApiUserCreationViewSet(viewsets.ModelViewSet):
+class UserCreationViewSet(viewsets.ModelViewSet):
     '''
     API endpoint for new users 
     '''
     queryset = User.objects.all()
-    serializer_class = ApiuserSerializer
+    serializer_class = UsercreationSerializer
     ordering_fields = '__all__'
+
+    def perform_create(self, request):
+        '''
+        Create new user
+        '''
+        if request == 'POST':
+            form = FormClass(data=request.POST)
+
+            # If the data is valid, log in and redirect
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password1']
+                email = form.cleaned_data['email']
+                user = Django_User.objects.create_user(username,
+                                                   email,
+                                                   password)
+                user.save()
+        
+
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     '''
