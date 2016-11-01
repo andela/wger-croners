@@ -42,7 +42,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django_social_project',
+    'social.apps.django_app.default',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
 
@@ -130,7 +131,10 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'wger.utils.helpers.EmailAuthBackend'
+    'wger.utils.helpers.EmailAuthBackend',
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
 )
 
 TEMPLATES = [
@@ -154,7 +158,10 @@ TEMPLATES = [
                 'django_mobile.context_processors.flavour',
 
                 # Breadcrumbs
-                'django.template.context_processors.request'
+                'django.template.context_processors.request',
+
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
             'loaders': [
                 # Django mobile
@@ -370,3 +377,11 @@ WGER_SETTINGS = {
     'EMAIL_FROM': 'wger Workout Manager <wger@example.com>',
     'TWITTER': False
 }
+
+SOCIAL_AUTH_TWITTER_KEY = "7joQZrOce3VdanbtctroEPIWN"
+SOCIAL_AUTH_TWITTER_SECRET = "AAWxYkvDfUW69gYQDJuGgSvGJWDaazCrhT69deHLswU7ugN9Ur"
+
+SOCIAL_AUTH_FACEBOOK_KEY = "102906663524112"
+SOCIAL_AUTH_FACEBOOK_SECRET = "c75dd35bbfbc04548f9f56ee2b9de694"
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "AIzaSyB1NH4VdkRvmXfHpzjPiOSqgtXUeP4a61Q"
