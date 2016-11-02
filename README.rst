@@ -151,6 +151,7 @@ The available options for the ``wger`` command (if installed from PyPI) or
   load_fixtures           Loads all fixtures
   migrate_db              Run all database migrations
   start_wger              Start the application using django's built in webserver
+  ::
 
   Shift to Postgres database
   --------------------------
