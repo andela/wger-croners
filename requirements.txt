@@ -19,7 +19,7 @@ django-sortedm2m
 django-bower
 invoke
 requests
-pyscopg2==2.6.2
+psycopg2
 
 # REST API
 djangorestframework>=3.2,<3.3
