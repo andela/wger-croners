@@ -12,7 +12,7 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-if os.environ.get(["CIRCLECI"]):
+if os.environ.get("CIRCLECI"):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
