@@ -136,6 +136,8 @@ sitemaps = {'exercises': ExercisesSitemap,
 urlpatterns = i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('wger.core.urls', namespace='core', app_name='core')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
+    url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'workout/', include('wger.manager.urls', namespace='manager')),
     url(r'exercise/', include('wger.exercises.urls', namespace='exercise')),
     url(r'weight/', include('wger.weight.urls', namespace='weight')),
@@ -148,8 +150,6 @@ urlpatterns = i18n_patterns(
         sitemap,
         {'sitemaps': sitemaps},
         name='sitemap'),
-    url('', include('social.apps.django_app.urls', namespace='social')),
-    url('', include('django.contrib.auth.urls', namespace='auth')),
 )
 
 #
