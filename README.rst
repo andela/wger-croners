@@ -199,11 +199,12 @@ To run the server using your new settings.py
 ::
   $  python manage.py runserver --settings settings
 
- You will now note that added data reflects on your postgres database.
+You will now note that added data reflects on your postgres database.
 
- If you set the settings.py to a different path, you have to declare that path whenever you call django commands.
- ::
-    --settings your_path.settings
+If you set the settings.py to a different path, you have to declare that path whenever you call django commands.
+
+::
+  python manage.py command --settings your_path.settings
 
 
 
