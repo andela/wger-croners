@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_social_project',
+    # Social auth
     'social.apps.django_app.default',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
@@ -130,12 +130,14 @@ MIDDLEWARE_CLASSES = (
 )
 
 AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
     'wger.utils.helpers.EmailAuthBackend',
-    'social.backends.facebook.FacebookOAuth2',
-    'social.backends.google.GoogleOAuth2',
-    'social.backends.twitter.TwitterOAuth',
 )
+
+
 
 TEMPLATES = [
     {
@@ -154,14 +156,14 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
 
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
+
                 # Django mobile
                 'django_mobile.context_processors.flavour',
 
                 # Breadcrumbs
                 'django.template.context_processors.request',
-
-                'social.apps.django_app.context_processors.backends',
-                'social.apps.django_app.context_processors.login_redirect',
             ],
             'loaders': [
                 # Django mobile
@@ -203,6 +205,14 @@ LOGIN_URL = '/user/login'
 LOGIN_REDIRECT_URL = '/'
 
 
+SOCIAL_AUTH_TWITTER_KEY = "7joQZrOce3VdanbtctroEPIWN"
+SOCIAL_AUTH_TWITTER_SECRET = "AAWxYkvDfUW69gYQDJuGgSvGJWDaazCrhT69deHLswU7ugN9Ur"
+
+SOCIAL_AUTH_FACEBOOK_KEY = "102906663524112"
+SOCIAL_AUTH_FACEBOOK_SECRET = "c75dd35bbfbc04548f9f56ee2b9de694"
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "51589201628-0haqjsskal9cfcn96rdfhpr6k49eqp66.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "co-PjoR3Pk410ioZwCQYSPb3"
 #
 # Internationalization
 #
@@ -377,11 +387,3 @@ WGER_SETTINGS = {
     'EMAIL_FROM': 'wger Workout Manager <wger@example.com>',
     'TWITTER': False
 }
-
-SOCIAL_AUTH_TWITTER_KEY = "7joQZrOce3VdanbtctroEPIWN"
-SOCIAL_AUTH_TWITTER_SECRET = "AAWxYkvDfUW69gYQDJuGgSvGJWDaazCrhT69deHLswU7ugN9Ur"
-
-SOCIAL_AUTH_FACEBOOK_KEY = "102906663524112"
-SOCIAL_AUTH_FACEBOOK_SECRET = "c75dd35bbfbc04548f9f56ee2b9de694"
-
-# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "AIzaSyB1NH4VdkRvmXfHpzjPiOSqgtXUeP4a61Q"
