@@ -41,17 +41,15 @@
   </a>
 </p>
 <p>
-  <a href="#" class="btn btn-block btn-primary" style="background-color:#3B5998">
+  <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-block btn-primary" style="background-color:#3B5998">
     <span class="{% fa_class 'facebook' %}"></span>
     Facebook
   </a>
 </p>
-<!--
 <p>
-  <a href="#" class="btn btn-block btn-primary" style="background-color:#DB4437">
+  <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-block btn-primary" style="background-color:#DB4437">
     <span class="{% fa_class 'google-plus' %}"></span>
     Google
   </a>
 </p>
--->
 {% endblock %}
