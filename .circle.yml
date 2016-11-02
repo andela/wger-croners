@@ -1,0 +1,19 @@
+machine:
+  post:
+    - pyenv global 2.7, 3.4, 3.5
+
+  environment:
+    DJANGO_SETTINGS_MODULE: settings
+    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+  
+dependencies:
+  pre:
+    - pip install --upgrade pip
+    - pip install --upgrade virtualenv
+    - pip install -r requirements_devel.txt
+    - npm install
+test:
+  override:
+    - python manage.py makemigrations --settings=settings
+    - python manage.py migrate --settings=settings
+    - coverage run --source='.' ./manage.py test --noinput --settings=settings -s
