@@ -186,7 +186,7 @@ whose user is 'postgres'
 Having done that, you need to migrate data to your database.
 ::
 
-  $ python manage.py migrate --settings /home/wger/wger.settings
+  $ python manage.py migrate --settings settings
 
 Checking your database you will find that the tables have been created but they have no data in them.
 To load the dummy data into your tables.
@@ -197,9 +197,13 @@ That will load dummy data into your tables.
 
 To run the server using your new settings.py
 ::
-  $  python manage.py runserver --settings /home/wger/wger.settings
-  
+  $  python manage.py runserver --settings settings
+
  You will now note that added data reflects on your postgres database.
+
+ If you set the settings.py to a different path, you have to declare that path whenever you call django commands.
+ ::
+    --settings your_path.settings
 
 
 
