@@ -201,9 +201,9 @@ To run the server using your new settings.py
 
 You will now note that data added on your site reflects on your postgres database.
 
-If you set the settings.py to a different path, you have to declare that path whenever you call django commands. In the case you set up the settings.py on the same level as manage.py, you do not need to keep declaring the settings-path when declaring django commands. 
+In the case you set up the settings.py on the same level as manage.py, you do not need to keep declaring the settings-path when declaring django commands. However, if you set the settings.py to a different path, you have to declare that path whenever you call django commands. 
 ::
-  $ python manage.py command --settings your_path.settings
+  $ python manage.py <command> --settings your_path.settings
 
 
 
