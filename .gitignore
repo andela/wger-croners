@@ -46,7 +46,7 @@ coverage.xml
 
 # Django stuff:
 *.log
-settings*.py
+
 *.sqlite
 /CACHE
 
@@ -59,6 +59,15 @@ target/
 # IDE
 .idea/
 
-# External Libraries 
+# External Libraries
 wger/core/static/bower_components
 node_modules
+
+# development stuff
+wger/config/migrations/0002_auto_20161102_1224.py
+wger/core/migrations/0010_auto_20161102_1224.py
+wger/email/migrations/0002_auto_20161102_1224.py
+wger/exercises/migrations/0004_auto_20161102_1224.py
+wger/gym/migrations/0007_auto_20161102_1224.py
+wger/manager/migrations/0008_auto_20161102_1224.py
+wger/nutrition/migrations/0002_auto_20161102_1224.py
