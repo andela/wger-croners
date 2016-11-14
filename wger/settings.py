@@ -12,31 +12,20 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-if os.environ.get("CIRCLECI"):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'circle_test',
-            'USER': 'ubuntu',
-            'PASSWORD': '',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-        }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test_wger',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'test_wger',
-            'USER': 'postgres',
-            'PASSWORD': '',
-            'HOST': '127.0.0.1',
-            'PORT': '',
-        }
-    }
+}
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '8@=u^s!m*t+i&p$a&w=4hbx(r*$feyn-p%oblw9o9yi#jj@4nw'
+SECRET_KEY = '2&4bc&)6jv#&20u1!jd-((n$^%#gdr+s)pt4(e7&3ztc8qe%@p'
 
 # Your reCaptcha keys
 RECAPTCHA_PUBLIC_KEY = ''
@@ -50,8 +39,7 @@ SITE_URL = 'http://localhost:8000'
 
 # Path to uploaded files
 # Absolute filesystem path to the directory that will hold user-uploaded files.
-
-MEDIA_ROOT = '/Users/rehema/.local/share/wger/media'
+MEDIA_ROOT = '/Users/steve254/.local/share/wger/media'
 MEDIA_URL = '/media/'
 
 # Allow all hosts to access the application. Change if used in production.
@@ -69,3 +57,8 @@ WGER_SETTINGS['EMAIL_FROM'] = 'wger Workout Manager <wger@example.com>'
 
 # Your twitter handle, if you have one for this instance.
 #WGER_SETTINGS['TWITTER'] = ''
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
