@@ -63,14 +63,14 @@ Then install the python packages from pypi in the virtualenv::
 
 ::
 
- $ git clone https://github.com/wger-project/wger.git
+ $ git clone https://github.com/andela/wger-croners.git
  $ cd wger
  $ pip install -r requirements.txt  # or requirements_devel.txt to develop
  $ invoke create_settings \
-          --settings-path /home/wger/wger/settings.py \
-          --database-path /home/wger/wger/database.sqlite
+          --settings-path /<your_path>/wger/wger-croners/settings.py \
+          --database-path /<your_path>/wger/wger-croners/database.sqlite
  $ invoke bootstrap_wger \
-          --settings-path /home/wger/wger/settings.py \
+          --settings-path /<your_path>/wger/wger-croners/settings.py \
           --no-start-server
  $ python manage.py runserver
 
@@ -141,7 +141,8 @@ Command line options
 
 The available options for the ``wger`` command (if installed from PyPI) or
 ``invoke`` (if installed from source) are the following (use e.g. ``wger
-<command>``::
+<command>``
+::
 
 
   bootstrap_wger          Performs all steps necessary to bootstrap the application
@@ -151,6 +152,68 @@ The available options for the ``wger`` command (if installed from PyPI) or
   load_fixtures           Loads all fixtures
   migrate_db              Run all database migrations
   start_wger              Start the application using django's built in webserver
+
+Shift to Postgres database
+--------------------------
+
+To transition to postgres database apart from the default SQLITE database which is routed to 
+a hiden folder, you need to first create a new settings.py file and set the database type to
+psql.
+
+To do this.
+Delete the settings.py file in your /wger-croners folder then,
+::
+
+  $ cd /<your_path>/wger/wger-croners/
+  $ invoke create_settings --settings-path /<your_path>/wger/wger-croners/ --database-type postgresql
+
+On checking the new settings.py file created in your specified path, you find that the database 
+specifications have been changed to. 
+::
+
+  DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test_wger',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '',
+    }
+ }
+
+This means you have to install postgress on your computer and create a new database with the name 'test_wger' 
+whose user is 'postgres'.
+You might also find it necessary to install psycopg.
+::
+
+  $ pip install psycopg
+
+Having done that, you need to migrate data to your database.
+::
+
+  $ python manage.py migrate --settings settings
+
+Checking your database you will find that the tables have been created but they have no data in them.
+To load the dummy data into your tables.
+::
+  $ invoke load_fixtures --settings-path /<your_path>/wger/wger-croners/settings.py
+
+That will load dummy data into your tables.
+
+To run the server using your new settings.py
+::
+  $  python manage.py runserver
+
+You will now note that data added on your site reflects on your postgres database.
+
+NB
+--
+In the case you set up the settings.py on the same level as manage.py, you do not need to keep declaring the settings-path when declaring django commands. However, if you set the settings.py to a different path, you have to declare that path whenever you call django commands. 
+::
+  $ python manage.py <command> --settings <your_path>.settings
+
+
 
 Contact
 =======
