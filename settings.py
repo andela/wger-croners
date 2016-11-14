@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from wger.settings_global import *
+import os
 
 # Use 'DEBUG = True' to get more details for server errors
 DEBUG = True
@@ -36,7 +37,7 @@ else:
     }
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'SUPER_SECRET'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Your reCaptcha keys
 RECAPTCHA_PUBLIC_KEY = ''
