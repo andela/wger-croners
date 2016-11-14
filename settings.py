@@ -36,7 +36,7 @@ else:
     }
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '8@=u^s!m*t+i&p$a&w=4hbx(r*$feyn-p%oblw9o9yi#jj@4nw'
+SECRET_KEY = 'SUPER_SECRET'
 
 # Your reCaptcha keys
 RECAPTCHA_PUBLIC_KEY = ''
