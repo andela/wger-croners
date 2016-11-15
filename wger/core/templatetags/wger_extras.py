@@ -72,13 +72,15 @@ def pagination(paginator, page):
     if paginator.num_pages > PAGINATION_MAX_TOTAL_PAGES:
 
         start_page = page.number - PAGINATION_PAGES_AROUND_CURRENT
-        for i in range(page.number - PAGINATION_PAGES_AROUND_CURRENT, page.number + 1):
+        for i in range(page.number - PAGINATION_PAGES_AROUND_CURRENT,
+                       page.number + 1):
             if i > 0:
                 start_page = i
                 break
 
         end_page = page.number + PAGINATION_PAGES_AROUND_CURRENT
-        for i in range(page.number, page.number + PAGINATION_PAGES_AROUND_CURRENT):
+        for i in range(page.number,
+                       page.number + PAGINATION_PAGES_AROUND_CURRENT):
             if i > paginator.num_pages:
                 end_page = i
                 break
@@ -259,7 +261,8 @@ def is_multiple(field):
     :return: boolen
     '''
     return isinstance(field.field.widget, BootstrapSelectMultiple) \
-        or isinstance(field.field.widget, BootstrapSelectMultipleTranslatedOriginal)
+        or isinstance(field.field.widget,
+                      BootstrapSelectMultipleTranslatedOriginal)
 
 
 @register.filter(name='is_fileupload')

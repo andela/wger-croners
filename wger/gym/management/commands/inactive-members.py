@@ -76,9 +76,11 @@ class Command(BaseCommand):
 
                 last_activity = user.usercache.last_activity
                 if not last_activity:
-                    user_list_no_activity.append({'user': user, 'last_activity': last_activity})
+                    user_list_no_activity.append({'user': user,
+                                                  'last_activity': last_activity})
                 elif today - last_activity > datetime.timedelta(weeks=weeks):
-                    user_list.append({'user': user, 'last_activity': last_activity})
+                    user_list.append({'user': user,
+                                      'last_activity': last_activity})
 
             if user_list or user_list_no_activity:
                 for trainer in trainer_list:
