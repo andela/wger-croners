@@ -77,7 +77,6 @@ class Language(models.Model):
         '''
         return False
 
-
 @python_2_unicode_compatible
 class UserProfile(models.Model):
     GENDER_MALE = '1'

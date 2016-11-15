@@ -1,3 +1,7 @@
+#
+# Requirements for wger for production
+#
+
 alabaster==0.7.9
 Babel==2.3.4
 bleach==1.4.3
@@ -43,3 +47,4 @@ Sphinx==1.4.8
 sqlparse==0.2.2
 static3==0.7.0
 whitenoise==3.2.2
+

@@ -191,7 +191,6 @@ def logout(request):
         user.delete()
     return HttpResponseRedirect(reverse('core:user:login'))
 
-
 def registration(request):
     '''
     A form to allow for registration of new users
