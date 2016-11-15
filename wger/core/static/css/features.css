@@ -1,0 +1,23 @@
+nav div ul li a {
+  color: #204A87 !important;
+  text-transform: uppercase;
+}
+.navbar-default {
+  background-color: #e6e6e6 !important;
+}
+.navbar-brand {
+  font-family: monospace;
+  font-size: 30px;
+  color: #204A87 !important;
+}
+.glyphicon {
+  padding-right: 4px !important;
+}
+.has-right-border {
+  border-right: 2px solid #ccc;
+  padding-right: 20px;
+}
+.has-left-border {
+  padding-left: 20px;
+  padding-right: 20px;
+}
