@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Workout Manager.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User as Django_User, User
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import detail_route
@@ -28,6 +28,7 @@ from wger.core.models import (
     RepetitionUnit,
     WeightUnit)
 from wger.core.api.serializers import (
+    UsercreationSerializer,
     UsernameSerializer,
     LanguageSerializer,
     DaysOfWeekSerializer,
@@ -37,6 +38,16 @@ from wger.core.api.serializers import (
 )
 from wger.core.api.serializers import UserprofileSerializer
 from wger.utils.permissions import UpdateOnlyPermission, WgerPermission
+from wger.core.views import user
+from wger.core.views.user import registration
+
+class UserCreationViewSet(viewsets.ModelViewSet):
+    '''
+    API endpoint for new users 
+    '''
+    queryset = User.objects.all()
+    serializer_class = UsercreationSerializer
+    ordering_fields = '__all__'
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
