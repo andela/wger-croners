@@ -15,7 +15,8 @@
 # You should have received a copy of the GNU Affero General Public License
 import logging
 
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import (PermissionRequiredMixin,
+                                        LoginRequiredMixin)
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy
@@ -38,7 +39,9 @@ from wger.utils.language import load_language
 logger = logging.getLogger(__name__)
 
 
-class ExerciseCategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+class ExerciseCategoryListView(LoginRequiredMixin,
+                               PermissionRequiredMixin,
+                               ListView):
     '''
     Overview of all categories, for administration purposes
     '''
@@ -82,8 +85,10 @@ class ExerciseCategoryUpdateView(WgerFormMixin,
 
     # Send some additional data to the template
     def get_context_data(self, **kwargs):
-        context = super(ExerciseCategoryUpdateView, self).get_context_data(**kwargs)
-        context['form_action'] = reverse('exercise:category:edit', kwargs={'pk': self.object.id})
+        context = super(ExerciseCategoryUpdateView,
+                        self).get_context_data(**kwargs)
+        context['form_action'] = reverse('exercise:category:edit',
+                                         kwargs={'pk': self.object.id})
         context['title'] = _(u'Edit {0}').format(self.object.name)
 
         return context
@@ -111,9 +116,11 @@ class ExerciseCategoryDeleteView(WgerDeleteMixin,
 
     # Send some additional data to the template
     def get_context_data(self, **kwargs):
-        context = super(ExerciseCategoryDeleteView, self).get_context_data(**kwargs)
+        context = super(ExerciseCategoryDeleteView,
+                        self).get_context_data(**kwargs)
 
         context['title'] = _(u'Delete {0}?').format(self.object.name)
-        context['form_action'] = reverse('exercise:category:delete', kwargs={'pk': self.object.id})
+        context['form_action'] = reverse('exercise:category:delete',
+                                         kwargs={'pk': self.object.id})
 
         return context

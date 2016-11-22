@@ -16,7 +16,8 @@
 
 import logging
 
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import (PermissionRequiredMixin,
+                                        LoginRequiredMixin)
 from django.core.urlresolvers import reverse
 from django.http.response import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
@@ -36,7 +37,8 @@ from wger.gym.models import ContractType, Gym
 logger = logging.getLogger(__name__)
 
 
-class AddView(WgerFormMixin, LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+class AddView(WgerFormMixin, LoginRequiredMixin,
+              PermissionRequiredMixin, CreateView):
     '''
     View to add a new contract type
     '''
@@ -51,7 +53,8 @@ class AddView(WgerFormMixin, LoginRequiredMixin, PermissionRequiredMixin, Create
         '''
         Redirect back to overview page
         '''
-        return reverse('gym:contract_type:list', kwargs={'gym_pk': self.object.gym_id})
+        return reverse('gym:contract_type:list',
+                       kwargs={'gym_pk': self.object.gym_id})
 
     def dispatch(self, request, *args, **kwargs):
         '''
@@ -82,7 +85,8 @@ class AddView(WgerFormMixin, LoginRequiredMixin, PermissionRequiredMixin, Create
         return context
 
 
-class UpdateView(WgerFormMixin, LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+class UpdateView(WgerFormMixin, LoginRequiredMixin,
+                 PermissionRequiredMixin, UpdateView):
     '''
     View to update an existing contract option
     '''
@@ -109,7 +113,8 @@ class UpdateView(WgerFormMixin, LoginRequiredMixin, PermissionRequiredMixin, Upd
         '''
         Redirect back to overview page
         '''
-        return reverse('gym:contract_type:list', kwargs={'gym_pk': self.object.gym_id})
+        return reverse('gym:contract_type:list',
+                       kwargs={'gym_pk': self.object.gym_id})
 
     def get_context_data(self, **kwargs):
         '''
@@ -120,7 +125,8 @@ class UpdateView(WgerFormMixin, LoginRequiredMixin, PermissionRequiredMixin, Upd
         return context
 
 
-class DeleteView(WgerDeleteMixin, LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+class DeleteView(WgerDeleteMixin, LoginRequiredMixin,
+                 PermissionRequiredMixin, DeleteView):
     '''
     View to delete an existing contract type
     '''
@@ -147,7 +153,8 @@ class DeleteView(WgerDeleteMixin, LoginRequiredMixin, PermissionRequiredMixin, D
         '''
         Redirect back to overview page
         '''
-        return reverse('gym:contract_type:list', kwargs={'gym_pk': self.object.gym_id})
+        return reverse('gym:contract_type:list',
+                       kwargs={'gym_pk': self.object.gym_id})
 
     def get_context_data(self, **kwargs):
         '''

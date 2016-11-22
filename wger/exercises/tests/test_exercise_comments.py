@@ -35,7 +35,8 @@ class ExerciseCommentRepresentationTestCase(WorkoutManagerTestCase):
         '''
         Test that the representation of an object is correct
         '''
-        self.assertEqual("{0}".format(ExerciseComment.objects.get(pk=1)), 'test 123')
+        self.assertEqual("{0}".format(ExerciseComment.objects.get(pk=1)),
+                         'test 123')
 
 
 class AddExerciseCommentTestCase(WorkoutManagerAddTestCase):
@@ -78,7 +79,8 @@ class ExercisecommentsTestCase(WorkoutManagerTestCase):
         self.assertEqual(len(comments), 1)
 
         # Delete the comment
-        response = self.client.post(reverse('exercise:comment:delete', kwargs={'id': 1}))
+        response = self.client.post(reverse('exercise:comment:delete',
+                                            kwargs={'id': 1}))
         comments = exercise_1.exercisecomment_set.all()
 
         self.assertEqual(response.status_code, 302)
