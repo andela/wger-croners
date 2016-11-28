@@ -33,4 +33,23 @@
         {% trans "Reset password" %}
     </a>
 </p>
+<h4>Social Login</h4>
+<p>
+  <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-block btn-primary" style="background-color:#1A8BF0">
+    <span class="{% fa_class 'twitter' %}"></span>
+    Twitter
+  </a>
+</p>
+<p>
+  <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-block btn-primary" style="background-color:#3B5998">
+    <span class="{% fa_class 'facebook' %}"></span>
+    Facebook
+  </a>
+</p>
+<p>
+  <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-block btn-primary" style="background-color:#DB4437">
+    <span class="{% fa_class 'google-plus' %}"></span>
+    Google
+  </a>
+</p>
 {% endblock %}

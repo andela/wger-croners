@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from wger.settings_global import *
-import os
 
 # Use 'DEBUG = True' to get more details for server errors
 DEBUG = True
@@ -13,31 +12,20 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-if os.environ.get("CIRCLECI"):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'circle_test',
-            'USER': 'ubuntu',
-            'PASSWORD': '',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-        }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '/home/andela/Desktop/Arnold/webapps/wger-croners/database.sqlite',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'test_wger',
-            'USER': 'postgres',
-            'PASSWORD': '',
-            'HOST': '127.0.0.1',
-            'PORT': '',
-        }
-    }
+}
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = '@+*s%fg8ea$d^%hct8=#c150j#8x+*g@t3lupzc0xw9pe^_eu3'
 
 # Your reCaptcha keys
 RECAPTCHA_PUBLIC_KEY = ''
@@ -51,8 +39,7 @@ SITE_URL = 'http://localhost:8000'
 
 # Path to uploaded files
 # Absolute filesystem path to the directory that will hold user-uploaded files.
-
-MEDIA_ROOT = '/Users/rehema/.local/share/wger/media'
+MEDIA_ROOT = '/home/andela/.local/share/wger/media'
 MEDIA_URL = '/media/'
 
 # Allow all hosts to access the application. Change if used in production.
